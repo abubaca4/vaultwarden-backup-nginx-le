@@ -35,7 +35,6 @@ services:
             - vaultwarden-rclone-data:/config/
 
     nginx-le:
-        build: .
         image: umputun/nginx-le:latest
         restart: always
         logging:
@@ -51,7 +50,7 @@ services:
             - "443:443"
         environment:
             TZ: 'UTC'
-            LETSENCRYPT: 'TRUE'
+            LETSENCRYPT: 'true'
             LE_EMAIL: 'name@example.com'
             LE_FQDN: 'www.example.com'
 
