@@ -1,0 +1,64 @@
+version: '3.4'
+
+services:
+    vaultwarden:
+        image: vaultwarden/server:latest
+        restart: always
+        environment:
+            WEBSOCKET_ENABLED: 'TRUE'
+        #    ADMIN_TOKEN: 'some_random_token_as_per_above_explanation'
+        volumes:
+            - vaultwarden-data:/data/
+
+    vaultwarden-backup:
+        image: ttionya/vaultwarden-backup:latest
+        restart: always
+        environment:
+           RCLONE_REMOTE_NAME: 'BitwardenBackup'
+        #   RCLONE_REMOTE_DIR: '/BitwardenBackup/'
+        #   CRON: '5 * * * *'
+        #   ZIP_ENABLE: 'TRUE'
+        #   ZIP_PASSWORD: 'WHEREISMYPASSWORD?'
+        #   ZIP_TYPE: 'zip'
+        #   BACKUP_FILE_DATE_SUFFIX: ''
+           BACKUP_KEEP_DAYS: 30
+        #   PING_URL: ''
+        #   MAIL_SMTP_ENABLE: 'FALSE'
+        #   MAIL_SMTP_VARIABLES: ''
+        #   MAIL_TO: ''
+        #   MAIL_WHEN_SUCCESS: 'TRUE'
+        #   MAIL_WHEN_FAILURE: 'TRUE'
+        #   TIMEZONE: 'UTC'
+        depends_on:
+            - vaultwarden
+        volumes:
+            - vaultwarden-data:/bitwarden/data/
+            - vaultwarden-rclone-data:/config/
+
+    nginx-le:
+        image: umputun/nginx-le:latest
+        restart: always
+        logging:
+            driver: json-file
+            options:
+                max-size: "10m"
+                max-file: "5"
+        volumes:
+            - nginx-ssl:/etc/nginx/ssl
+            - ./vaultwarden.conf:/etc/nginx/service.conf
+        ports:
+            - "80:80"
+            - "443:443"
+        environment:
+            TZ: 'UTC'
+            LETSENCRYPT: 'true'
+            LE_EMAIL: 'name@example.com'
+            LE_FQDN: 'www.example.com'
+
+volumes:
+    vaultwarden-data:
+        name: vaultwarden-data
+    vaultwarden-rclone-data:
+        external: true
+        name: vaultwarden-rclone-data
+    nginx-ssl:
