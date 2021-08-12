@@ -63,3 +63,12 @@ volumes:
         name: vaultwarden-rclone-data
     nginx-ssl:
         
+networks:
+  default:
+    driver: bridge
+    enable_ipv6: true
+    ipam:
+      driver: default
+      config:
+        # must be a ULA range
+        - subnet: fd00:1:2::/48
