@@ -7,6 +7,8 @@ services:
         environment:
             WEBSOCKET_ENABLED: 'TRUE'
         #    ADMIN_TOKEN: 'some_random_token_as_per_above_explanation'
+            ROCKET_ADDRESS: '::'
+            WEBSOCKET_ADDRESS: '::'
         volumes:
             - vaultwarden-data:/data/
 
