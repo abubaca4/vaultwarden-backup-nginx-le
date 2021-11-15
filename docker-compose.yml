@@ -11,6 +11,9 @@ services:
             WEBSOCKET_ADDRESS: '::'
         volumes:
             - vaultwarden-data:/data/
+        networks:
+            default:
+                ipv6_address: fd00:1:2::10
 
     vaultwarden-backup:
         image: ttionya/vaultwarden-backup:latest
