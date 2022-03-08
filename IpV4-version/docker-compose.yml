@@ -9,6 +9,7 @@ services:
         #    ADMIN_TOKEN: 'some_random_token_as_per_above_explanation'
         volumes:
             - vaultwarden-data:/data/
+            - /etc/localtime:/etc/localtime:ro
 
     vaultwarden-backup:
         image: ttionya/vaultwarden-backup:latest
@@ -28,7 +29,7 @@ services:
         #   MAIL_TO: ''
         #   MAIL_WHEN_SUCCESS: 'TRUE'
         #   MAIL_WHEN_FAILURE: 'TRUE'
-        #   TIMEZONE: 'UTC'
+           TIMEZONE: 'Europe/Moscow'
         depends_on:
             - vaultwarden
         volumes:
@@ -50,7 +51,7 @@ services:
             - "80:80"
             - "443:443"
         environment:
-            TZ: 'UTC'
+            TZ: 'Europe/Moscow'
             LETSENCRYPT: 'true'
             LE_EMAIL: 'name@example.com'
             LE_FQDN: 'www.example.com'

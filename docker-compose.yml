@@ -11,6 +11,7 @@ services:
             WEBSOCKET_ADDRESS: '::'
         volumes:
             - vaultwarden-data:/data/
+            - /etc/localtime:/etc/localtime:ro
         networks:
             default:
                 ipv6_address: fd00:1:2::10
@@ -33,7 +34,7 @@ services:
         #   MAIL_TO: ''
         #   MAIL_WHEN_SUCCESS: 'TRUE'
         #   MAIL_WHEN_FAILURE: 'TRUE'
-        #   TIMEZONE: 'UTC'
+           TIMEZONE: 'Europe/Moscow'
         depends_on:
             - vaultwarden
         volumes:
@@ -57,7 +58,7 @@ services:
         depends_on:
             - vaultwarden
         environment:
-            TZ: 'UTC'
+            TZ: 'Europe/Moscow'
             LETSENCRYPT: 'true'
             LE_EMAIL: 'name@example.com'
             LE_FQDN: 'www.example.com'
