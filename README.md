@@ -36,4 +36,19 @@ LE_EMAIL: 'name@example.com'
 LE_FQDN: 'www.example.com'
 ```
 
-I planed to write somefing more about [vaultwarden-backup](https://github.com/ttionya/vaultwarden-backup/) because I find information about setup and recover it not compleatly clear for me and spend a lot time to do it.
+## Restore backup in new system
+
+### 1 step
+
+You need to run ```docker-compose up``` first time to create vaultwarden-data volume correctly. Please wait until DH will be generated(or nginx will not start correctly without deling  ssl volume)
+
+### 2 step
+
+You need to put backup archive to local path(I created clear dir only for backup archive) and use path in this command instead of /local/backup/path/ and your backup file archive name instead of backup.zip:
+
+```
+docker run --rm -it \
+  --mount type=volume,source=vaultwarden-data,target=/bitwarden/data/ \
+  --mount type=bind,source=/local/backup/path/,target=/bitwarden/restore/ \
+  ttionya/vaultwarden-backup:latest restore --zip-file backup.zip
+```
