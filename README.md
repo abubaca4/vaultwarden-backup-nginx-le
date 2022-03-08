@@ -30,10 +30,10 @@ You remote name(you can also change other env settings of vaultwarden-backup as 
 ```
 RCLONE_REMOTE_NAME: 'BitwardenBackup'
 ```
-You email and domain(recomended to use real email, let encrypt will send you warning if something will goes wrong and Certificate not updated automatic.)
+You email and domain(recomended to use real email, Let’s Encrypt will send you warning if something will goes wrong and Certificate not updated automatic.)
 ```
 LE_EMAIL: 'name@example.com'
 LE_FQDN: 'www.example.com'
 ```
 
-I planed to write somefing more about [vaultwarden-backup](https://github.com/ttionya/vaultwarden-backup/) becourse I find information about setup and recover it not compleatly clear for me and spend a lot time to do it.
+I planed to write somefing more about [vaultwarden-backup](https://github.com/ttionya/vaultwarden-backup/) because I find information about setup and recover it not compleatly clear for me and spend a lot time to do it.
