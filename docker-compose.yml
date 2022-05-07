@@ -42,7 +42,7 @@ services:
             - vaultwarden-rclone-data:/config/
 
     nginx-le:
-        image: umputun/nginx-le:master
+        image: umputun/nginx-le:latest
         restart: always
         logging:
             driver: json-file
