@@ -2,6 +2,8 @@
 
 This is docker-compose that run [vaultwarden](https://github.com/dani-garcia/vaultwarden) with [nginx-le](https://github.com/nginx-le/nginx-le) reverse proxy and backups by [vaultwarden-backup](https://github.com/ttionya/vaultwarden-backup/).
 
+Also [watchtower](https://github.com/containrrr/watchtower) used to auto upgrade images.
+
 It has two version: with ipv6 support and without it. The main difference is ipv6 version can log client ipv6 addresses but requaired some additional actions to setup.
 
 Steps of runing:
