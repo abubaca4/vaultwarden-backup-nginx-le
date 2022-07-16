@@ -8,7 +8,7 @@ services:
             WEBSOCKET_ENABLED: 'TRUE'
         #    ADMIN_TOKEN: 'some_random_token_as_per_above_explanation'
         labels:
-            - com.centurylinklabs.watchtower.enable="true"
+            - com.centurylinklabs.watchtower.enable=true
         volumes:
             - vaultwarden-data:/data/
             - /etc/localtime:/etc/localtime:ro
@@ -35,7 +35,7 @@ services:
         depends_on:
             - vaultwarden
         labels:
-            - com.centurylinklabs.watchtower.enable="true"
+            - com.centurylinklabs.watchtower.enable=true
         volumes:
             - vaultwarden-data:/bitwarden/data/
             - vaultwarden-rclone-data:/config/
@@ -52,7 +52,7 @@ services:
             - nginx-ssl:/etc/nginx/ssl
             - ./vaultwarden.conf:/etc/nginx/service.conf
         labels:
-            - com.centurylinklabs.watchtower.enable="true"
+            - com.centurylinklabs.watchtower.enable=true
         ports:
             - "80:80"
             - "443:443"
