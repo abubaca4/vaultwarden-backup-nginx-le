@@ -37,6 +37,12 @@ You email and domain(recomended to use real email, Let’s Encrypt will send you
 LE_EMAIL: 'name@example.com'
 LE_FQDN: 'www.example.com'
 ```
+If you want get push in mobile app add id and key from bitwarden site. Otherwise comment this lines
+```
+PUSH_ENABLED: true
+PUSH_INSTALLATION_ID: 'CHANGEME'
+PUSH_INSTALLATION_KEY: 'CHANGEME'
+```
 
 ## Restore backup in new system
 
